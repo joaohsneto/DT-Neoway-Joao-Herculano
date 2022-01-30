@@ -19,6 +19,13 @@ def scrape_cpf_path(html_content):
     return result
 
 
+# função auxiliar para coletar os nomes dos estudantes
+def scrape_student_name(html_content):
+    selector = Selector(html_content)
+    result = selector.xpath("/html/body/div[1]/text()").get()
+    return result
+
+
 if __name__ == "__main__":
     base_url = "https://sample-university-site.herokuapp.com"
     quotes_html = fetch_content(base_url)
