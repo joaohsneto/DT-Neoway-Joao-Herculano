@@ -18,5 +18,8 @@ def insert_data(cpf, name, score):
     sql = "INSERT INTO students(cpf, name, score) values (%s, %s, %s)"
     values = (cpf, name, score)
     cursor.execute(sql, values)
+
+
+def close_connection():
     # fechar conexão
     conn.close()
