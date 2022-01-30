@@ -40,7 +40,19 @@ def scrape_next_page_path(html_content):
     return result
 
 
+# Iniciando a coleta dos dados dos estudantes
 if __name__ == "__main__":
     base_url = "https://sample-university-site.herokuapp.com"
     quotes_html = fetch_content(base_url)
     cpf_paths = scrape_cpf_path(quotes_html)
+
+
+# coletando os links dos cpfs de todas as páginas
+    print("Loading...")
+    while True:
+        next_page = scrape_next_page_path(quotes_html)
+        if next_page == "/approvals/6":
+            break
+        quotes_html = fetch_content(base_url + next_page)
+        cpf_paths.extend(scrape_cpf_path(quotes_html))
+    print("Done!")
