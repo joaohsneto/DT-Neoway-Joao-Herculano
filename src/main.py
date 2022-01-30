@@ -33,6 +33,13 @@ def scrape_student_score(html_content):
     return result
 
 
+# função auxiliar para coletar o link de próxima página
+def scrape_next_page_path(html_content):
+    selector = Selector(html_content)
+    result = selector.css("div:nth-child(12) > a ::attr(href)").get()
+    return result
+
+
 if __name__ == "__main__":
     base_url = "https://sample-university-site.herokuapp.com"
     quotes_html = fetch_content(base_url)
