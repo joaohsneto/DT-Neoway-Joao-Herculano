@@ -1,5 +1,6 @@
 import requests
 from parsel import Selector
+from connection import insert_data, close_connection
 
 
 # função auxiliar para requisição html
@@ -55,4 +56,14 @@ if __name__ == "__main__":
             break
         quotes_html = fetch_content(base_url + next_page)
         cpf_paths.extend(scrape_cpf_path(quotes_html))
+
+
+# coletando as informações dos estudantes e inserindo no banco de dados
+    for path in cpf_paths:
+        student_cpf = path.split("/")[-1].replace("-", "").replace(".", "")
+        students_html = fetch_content(base_url + path)
+        student_name = scrape_student_name(students_html).strip().upper()
+        student_score = scrape_student_score(students_html).strip()
+        insert_data(student_cpf, student_name, float(student_score))
+    close_connection()
     print("Done!")
