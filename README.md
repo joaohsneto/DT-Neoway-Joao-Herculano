@@ -80,6 +80,10 @@ python3 main.py
 ```
 <img src="https://raw.githubusercontent.com/joaohsneto/DT-Neoway-Joao-Herculano/main/src/public/script.gif"/>
 
+Ao terminar a execução será exibindo a mensagem "Done!" no terminal, e o banco de dados estara populado com os dados dos estudantes.
+
+<img src="https://raw.githubusercontent.com/joaohsneto/DT-Neoway-Joao-Herculano/main/src/public/db_loading.gif"/>
+
 Observações:
 O código está limitado a raspar os dados de 5 páginas do site, para executar em todas as páginas, no arquivo main.py basta descomentar a linha 60 e apagar a linha 61. 
 
